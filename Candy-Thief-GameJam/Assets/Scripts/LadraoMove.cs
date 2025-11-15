@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class LadraoMove : MonoBehaviour
 {
     [Header("Pontos de Spawn")]
@@ -12,7 +12,27 @@ public class LadraoMove : MonoBehaviour
     private float timer;
 
     private Camera _mainCamera;
+    private LadraoControls controls;
 
+
+    private void Awake()
+    {
+        //Instancia as ações
+        controls = new LadraoControls();
+
+        controls.Gameplay.Click.performed += ctx => OnClick();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void Osable()
+    {
+        controls.Disable();       
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -33,27 +53,27 @@ public class LadraoMove : MonoBehaviour
             MoverParaPontoAleatorio();
             timer = tempoTroca;
         }
-        //Detectar clique
-        if (Input.GetMouseButtonDown(0))
+       
+    }
+    private void OnClick()
+    {
+        //Posição do mouse
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+
+        //Raycast
+        Ray ray = _mainCamera.ScreenPointToRay(mousePos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (hit.transform == transform)
             {
-                if (hit.transform == transform)
-                {
-                    Debug.Log("Ladrão clicado!");
+                Debug.Log("Clicou no ladrão!");
 
-                    //Move o ladrão
-                    MoverParaPontoAleatorio();
-
-                    //Resetar o timer
-                    timer = tempoTroca;
-                }    
-            } 
+                MoverParaPontoAleatorio();
+                timer =tempoTroca;
+            }
         }
     }
-
     private void MoverParaPontoAleatorio()
     {
         if (pontos.Length == 0)

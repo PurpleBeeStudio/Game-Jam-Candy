@@ -1,0 +1,47 @@
+{
+    "version": 1,
+    "name": "LadraoControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "5a5e3b0a-e9ff-4b6f-8cd1-0e7b3fc17d68",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "fbfe5147-54de-486a-aa10-17e752bae8e5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e54ebcb4-f009-40bc-9798-8805ffe2d238",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
