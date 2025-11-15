@@ -5,6 +5,8 @@ public class LadraoMove : MonoBehaviour
     [Header("Pontos de Spawn")]
     public Transform[] pontos;
 
+    private int ultimoIndex = -1;
+
     [Header("Timer para troca de posições automática")]
     public float tempoTroca = 3f;
     private float timer;
@@ -59,10 +61,18 @@ public class LadraoMove : MonoBehaviour
             Debug.LogWarning("Nenhum ponto foi configurado!");
         }
 
-        //escolhe um indice aleatório para se mover
-        int index = Random.Range(0,pontos.Length);
+        int novoIndex;
 
-        transform.position = pontos[index].position;
-        Debug.Log("O Ladrão se moveu para o ponto: " + pontos[index].name);
+        //Garante que não repita o ponto que já esteja
+        do
+        {
+          novoIndex = Random.Range(0,pontos.Length);   
+        }
+        while (novoIndex == ultimoIndex);
+
+        ultimoIndex = novoIndex;
+        
+        transform.position = pontos[novoIndex].position;
+        Debug.Log("O Ladrão se moveu para o ponto: " + pontos[novoIndex].name);
     }
 }
