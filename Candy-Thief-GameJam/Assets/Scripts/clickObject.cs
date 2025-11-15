@@ -17,7 +17,6 @@ public class clickObject : MonoBehaviour
 
     private void Update()
     {
-        if (_mainCamera == null) Debug.LogError("MAIN CAMERA NÃO ENCONTRADA!");
         if (Input.GetMouseButtonDown(0))
         {
             _ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -26,7 +25,6 @@ public class clickObject : MonoBehaviour
             {
                 if (_rayHit.transform == transform)
                 {
-                    Debug.Log("Raycast acertou: " + _rayHit.transform.name);
                     Debug.Log("Click!");
                     _renderer.material.color =
                         _renderer.material.color == Color.red ? Color.blue : Color.red;
