@@ -13,6 +13,8 @@ public class clickObject : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _renderer = GetComponent<Renderer>();
+       Cursor.visible = false;
+
     }
 
     private void Update()
