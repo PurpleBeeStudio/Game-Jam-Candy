@@ -52,6 +52,9 @@ public class LadraoMove : MonoBehaviour
         {
             MoverParaPontoAleatorio();
             timer = tempoTroca;
+
+            //Avisa "LadraoVence" que o ladrão escapou
+            FindObjectOfType<LadraoVence>().RegistrarFuga();
         }
        
     }
@@ -68,6 +71,9 @@ public class LadraoMove : MonoBehaviour
             if (hit.transform == transform)
             {
                 Debug.Log("Clicou no ladrão!");
+
+                //Atualiza contador de tapas
+                FindObjectOfType<cliquesVitoria>().RegistrarClique();
 
                 MoverParaPontoAleatorio();
                 timer =tempoTroca;
