@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class EndMenu : MonoBehaviour
 {
-    public void ClickPlay()
+    public void ClickReplay()
     {
         SceneManager.LoadScene("Game");
     }
 
-    public void ClickExit()
+    public void ClickReturn()
     {
-        Debug.Log("Exiting...");
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
     }
 }
 
