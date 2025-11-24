@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LadraoVence : MonoBehaviour
 {
@@ -32,7 +36,6 @@ public class LadraoVence : MonoBehaviour
     private void Derrota()
     {
         Debug.Log("Você perdeu!");
-        textoDoces.text = "Derrota!";
-        //NOTA: fazer transi��o de tela depois
+        SceneManager.LoadScene("LoseMenu");
     }
 }
