@@ -19,14 +19,14 @@ public class LadraoVence : MonoBehaviour
     }
     private void Update()
     {
-        textoDoces.text = $"Doces Restantes:{docesAtual}/{docesMax}";
+        textoDoces.text = $"Candies:{docesAtual}/{docesMax}";
     }
 
     public void RegistrarFuga()
     {
         docesAtual--;
         Debug.Log("O Ladrão escapou!");
-        textoDoces.text = $"Doces Restantes:{docesAtual}/{docesMax}";
+        textoDoces.text = $"Candies:{docesAtual}/{docesMax}";
         if (docesAtual <= 0)
         {
             Derrota();
