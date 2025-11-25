@@ -14,6 +14,10 @@ public class cliquesVitoria : MonoBehaviour
 
     private int cliquesAtuais = 0;
 
+    public AudioSource audioSourceOuch;
+    public AudioSource audioSourceBabyLaugh;
+
+
 
     private void Update()
     {
@@ -26,6 +30,14 @@ public class cliquesVitoria : MonoBehaviour
 
         //atualiza os cliques na tela
         textoCliques.text = $"Slaps: {cliquesAtuais}/{cliquesNecessarios}";
+        if(audioSourceOuch !=null && audioSourceOuch.clip != null)
+                    {
+                        AudioSource.PlayClipAtPoint(audioSourceOuch.clip, transform.position);
+                    }
+        if(audioSourceBabyLaugh !=null && audioSourceBabyLaugh.clip != null)
+                    {
+                        AudioSource.PlayClipAtPoint(audioSourceBabyLaugh.clip, transform.position);
+                    }
 
         //verifica se a fase foi conclu�da
         if (cliquesAtuais >= cliquesNecessarios)

@@ -12,6 +12,9 @@ public class LadraoVence : MonoBehaviour
     public int docesAtual;
     [Header("UI")]
     public Text textoDoces;
+    public AudioSource audioSourceLaugh;
+    public AudioSource audioSourceCry;
+
 
     private void Start()
     {
@@ -27,6 +30,15 @@ public class LadraoVence : MonoBehaviour
         docesAtual--;
         Debug.Log("O Ladrão escapou!");
         textoDoces.text = $"Candies:{docesAtual}/{docesMax}";
+        if(audioSourceLaugh !=null && audioSourceLaugh.clip != null)
+                    {
+                        AudioSource.PlayClipAtPoint(audioSourceLaugh.clip, transform.position);
+                    }
+        if(audioSourceCry !=null && audioSourceCry.clip != null)
+        {
+            AudioSource.PlayClipAtPoint(audioSourceCry.clip, transform.position );
+        }
+
         if (docesAtual <= 0)
         {
             Derrota();
